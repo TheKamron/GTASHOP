@@ -2509,8 +2509,8 @@ body {
 
 .register {
   position: absolute;
-  width: 400px;
-  height: 565px;
+  width: 380px;
+  height: 557px;
   background: conic-gradient(#212121, #212121) padding-box, 
   conic-gradient(from var(--angle), transparent 30%, #ff4545, #00ddeb, #00ff99, blue, #f704f7, #ff4545) border-box;
   border: 4px solid transparent;
@@ -2628,10 +2628,20 @@ body {
   display: inline;
 }
 
-@media only screen and (max-width: 600px) {
-  .login {
-    width: 70%;
-    padding: 3em;
+@media (max-width: 768px) {
+  .register {
+    height: 500px;
+    padding: 30px; /* Kichik ekranda paddingni kamaytirdik */
+    font-size: 1em; /* Font hajmi kichraydi */
+  }
+}
+
+/* Juda kichik ekranlar uchun (masalan, mobil telefonlar) */
+@media (max-width: 480px) {
+  .register {
+    height: 500px;
+    padding: 20px;
+    font-size: 0.9em;
   }
 }
 
