@@ -1,0 +1,87 @@
+    <head>
+          <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Admin Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/fontawesome.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/admin-dash-style.css">
+    </head>
+   <body>
+            <div class="col-lg-12">
+          <form id="publish-product-form" action="/add-account" method="post">
+            <div class="row">
+                            <div class="col-lg-4">
+                <fieldset>
+                    <label for="">Serverni Tanlang</label>
+                <select class="select-server" name="server" id="server">
+                  <option value="Rodina RP | 01">Rodina RP | Централный Округ</option>
+                  <option value="Rodina RP | 02">Rodina RP | Южный Округ</option>
+                  <option value="Rodina RP | 03">Rodina RP | Северный Округ</option>
+                  <option value="Rodina RP | 04">Rodina RP | Восточный Округ</option>
+                  <option value="Rodina RP | 05">Rodina RP | Западный Округ</option>
+                  <option value="Rodina RP | 06">Rodina RP | Приморский Округ</option>
+                  <option value="Rodina RP | 07">Rodina RP | Федеральный Округ</option>
+               </select>
+                </fieldset>
+              </div>
+              <div class="col-lg-4">
+                <fieldset>
+                  <label>Product Name</label>
+                  <input type="text" name="productTitle" id="productTitle" value="Akkaunt Sotiladi | {{account.selectServer}}"  autocomplete="on" required>
+                </fieldset>
+              </div>
+              <div class="col-lg-4">
+                <fieldset>
+                  <label>Product Owner</label>
+                  <input type="text" name="owner" id="owner" value="{{account.user.userName}}" autocomplete="on" required>
+                </fieldset>
+              </div>
+              <div class="col-lg-4">
+                <fieldset>
+                  <label>Contact User</label>
+                  <input type="text" name="contactUser" id="contactUser" value="{{account.userContact}}" autocomplete="on" required>
+                </fieldset>
+              </div>
+              <div class="col-lg-4">
+                <fieldset>
+                  <label>Price (Uzs)</label>
+                  <input type="number" name="price" id="price" value="{{account.accountPrice }}" autocomplete="on" required>
+                </fieldset>
+              </div>
+                <div class="col-lg-4">
+                <fieldset>
+                  <label>Avatar</label>
+                  <input type="text" name="userAvatar" id="serverImage" value="{{account.user.avatar}}" autocomplete="on" required>
+                </fieldset>
+              </div>
+                <div class="col-lg-6">
+                <fieldset>
+                  <label>Photo</label>
+                  <input type="text" name="serverImage" id="serverImage" value=".jpg" autocomplete="on" required>
+                </fieldset>
+              </div>
+              <div class="col-lg-6">
+                <fieldset>
+                  <label>Date</label>
+                  <input type="text" name="date" id="date" value="{{formatDate account.createdAt}}" autocomplete="on" required>
+                </fieldset>
+              </div>
+            <div class="col-lg-6">
+                <fieldset>
+                  <label>Description</label>
+                  <textarea class="add-info" name="addInfo" id="add-info"  required>{{account.addInfo}}</textarea>
+                </fieldset>
+              </div>
+              <div class="col-lg-6">
+                <fieldset>
+                  <button type="submit" id="form-submit" class="btn">Tasdiqlash</button>
+                </fieldset>
+              </div>
+            </div>
+          </form>
+        </div>
+  </body>
+   

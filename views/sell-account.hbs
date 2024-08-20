@@ -1,0 +1,136 @@
+  <div class="page-heading normal-space">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <h6>GTASHOP - O'ynaganlarimizni Pulga Aylantirish Vaqti Keldi!</h6>
+          <h2>Akkauntingizni Soting!</h2>
+          <span>Asosiy --> <a href="">Akkaunt Sotish</a></span>
+          <div class="buttons">
+            <div class="main-button">
+              <a href="/sell-account">Akkaunt Sotish</a>
+            </div>
+            <div class="border-button">
+              <a href="/sell-money">Virt Sotish</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="item-details-page">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="section-heading">
+            <div class="line-dec"></div>
+            <h2>Akkauntingizni <em>Sotish</em> Uchun Berilganlarni To'ldiring.</h2>
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <form id="sell-account-form" action="/sell-my-account" method="post">
+            <div class="row">
+              <div class="col-lg-4">
+                <fieldset>
+                    <label for="">Serverni Tanlang</label>
+                <select class="select-server" name="selectServer" id="">
+                  <option value="Rodina RP | 01">Rodina RP | Централный Округ</option>
+                  <option value="Rodina RP | 02">Rodina RP | Южный Округ</option>
+                  <option value="Rodina RP | 03">Rodina RP | Северный Округ</option>
+                  <option value="Rodina RP | 04">Rodina RP | Восточный Округ</option>
+                  <option value="Rodina RP | 05">Rodina RP | Западный Округ</option>
+                  <option value="Rodina RP | 06">Rodina RP | Приморский Округ</option>
+                  <option value="Rodina RP | 07">Rodina RP | Федеральный Округ</option>
+               </select>
+                </fieldset>
+              </div>
+              <div class="col-lg-4">
+                <fieldset>
+                  <label for="accountLvl">Akkaunt Darajasi</label>
+                  <input type="number" name="accountLvl" id="account-lvl" placeholder="LvL." autocomplete="on" required>
+                </fieldset>
+              </div>
+              <div class="col-lg-4">
+                <fieldset>
+                  <label for="">Akkauntdagi Mablag'</label>
+                  <input type="text" name="accountMoney" id="account-money" placeholder="10mln-15mln" autocomplete="on" required>
+                </fieldset>
+              </div>
+              <div class="col-lg-6">
+                <fieldset>
+                  <label for="">Akkaunt Qo'riqlanganmi</label>
+                  <input type="text" name="accountSecurity" id="account-security" placeholder="Ha bo'lsa, Qaysida (Email,Telegram,VK)" autocomplete="on" required>
+                </fieldset>
+              </div>
+              <div class="col-lg-6">
+                <fieldset>
+                  <label for="">Narxi (So'mda)</label>
+                  <input type="number" name="accountPrice" id="account-price" placeholder="50.000 So'm" autocomplete="on" required>
+                </fieldset>
+              </div>
+                <div class="col-lg-6">
+                <fieldset>
+                  <label for="">Foto Isbot (O'yindagi statiska rasmi - /stats + /time)</label>
+                  <input type="url" name="accountImage" id="account-image" placeholder="imgur.com/upload" autocomplete="on" required>
+                </fieldset>
+              </div>
+              <div class="col-lg-6">
+                <fieldset>
+                  <label>Telegram Profilingiz</label>
+                  <input type="text" name="userContact" id="user-sm" placeholder="eshmatvoy_toshmatov" autocomplete="on" required>
+                </fieldset>
+              </div>
+            <div class="col-lg-6">
+                <fieldset>
+                  <label>Qo'shimcha Ma'lumot</label>
+                  <textarea class="add-info" name="addInfo" id="add-info" placeholder="Mashina,Aksessuar va boshqalar..." required></textarea>
+                </fieldset>
+              </div>
+              <div class="col-lg-6">
+                <fieldset>
+                  <button type="submit" id="form-submit" class="orange-button">Tasdiqlash</button>
+                </fieldset>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="col-lg-12">
+          <div class="section-heading">
+            <div class="line-dec"></div>
+            <h2>Sizning <em>E'loningiz</em> Mana Bunday Bo'ladi.</h2>
+          </div>
+        </div>
+        <div class="col-lg-7">
+          <div class="left-image">
+            <img src="images/ex-server.jpg" alt="" style="border-radius: 20px;">
+          </div>
+        </div>
+        <div class="col-lg-5 align-self-center">
+          <h3>Akkaunt Sotiladi | Rodina RP 01 </h4> <br>
+          <span class="author">
+            <img src="images/user-avatar.jpg" alt="" style="max-width: 50px; border-radius: 50%;">
+            <h6>Eshmatov Toshmat<br><a href="#">@eshmatboy</a></h6> 
+          </span>
+          <h4>(Qo'shimcha Ma'lumot). Akkauntda Bugatti Chiron, BMW M5 CS va Mers Banan bor. 
+            Aksessuarlardan esa velosiped +12, shar +12.  </h4>
+          <div class="row">
+            <div class="col-3">
+              <span class="price">
+                Narxi<br><strong>50.000</strong><br><em>(UZS)</em>
+              </span>
+            </div>
+            <div class="col-4">
+              <span class="owner">
+                Bog'lanish Uchun<br><strong>Telegram</strong><br><em>(@Eshmatboy)</em>
+              </span>
+            </div>
+            <div class="col-5">
+              <span class="date">
+                Qo'yilgan Vaqti<br><strong>20.08.2024</strong><br><em>(20-Avgust, 2024)</em>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

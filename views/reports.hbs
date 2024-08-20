@@ -1,0 +1,20 @@
+ {{#if reports.length}}
+       <div class="card-container">
+   {{#each reports}}
+<div class="card">
+
+        <div class="body">
+            <p class="subject-text mx-auto">{{{subject}}}</p>
+      <p class="text">{{message}}</p><span class="username">from: {{email}}</span>
+       <div class="footer">
+         <form action="/delete-report/{{_id}}" method="post">
+            <button class="tm-product-delete-link "><i class="far fa-trash-alt tm-product-delete-icon"></i></button>                
+         </form>
+     </div>
+  </div>
+  </div>
+     {{/each}}
+   </div>
+ {{else}}
+   <h2 class="text-white mx-auto ">Hech qanday Arizalar Yo'q!</h2>
+ {{/if}}

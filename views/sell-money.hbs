@@ -1,0 +1,87 @@
+  <div class="page-heading normal-space">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <h6>GTASHOP - O'ynaganlarimizni Pulga Aylantirish Vaqti Keldi!</h6>
+          <h2>Virtual Pullarni Soting!</h2>
+          <span>Asosiy --> <a href="">Virt Sotish</a></span>
+          <div class="buttons">
+            <div class="main-button">
+              <a href="/sell-money">Virt Sotish</a>
+            </div>
+            <div class="border-button">
+              <a href="/sell-account">Akkaunt Sotish</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="item-details-page">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="section-heading">
+            <div class="line-dec"></div>
+            <h2>Virtual Pullarni <em>Sotish</em> Uchun Berilganlarni To'ldiring.</h2>
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <form id="sell-account-form" action="/sell-my-money" method="post">
+            <div class="row">
+              <div class="col-lg-4">
+                <fieldset>
+                    <label for="">Serverni Tanlang</label>
+                <select class="select-server" name="selectServer" id="selectServer">
+                  <option value="Rodina RP | 01">Rodina RP | Централный Округ</option>
+                  <option value="Rodina RP | 02">Rodina RP | Южный Округ</option>
+                  <option value="Rodina RP | 03">Rodina RP | Северный Округ</option>
+                  <option value="Rodina RP | 04">Rodina RP | Восточный Округ</option>
+                  <option value="Rodina RP | 05">Rodina RP | Западный Округ</option>
+                  <option value="Rodina RP | 06">Rodina RP | Приморский Округ</option>
+                  <option value="Rodina RP | 07">Rodina RP | Федеральный Округ</option>
+               </select>
+                </fieldset>
+              </div>
+              <div class="col-lg-4">
+                <fieldset>
+                  <label for="priceMoney">1mln uchun narx(so'mda)</label> 
+                  <input type="number" name="priceMoney" id="price-money" placeholder="0" autocomplete="on" required>
+                </fieldset>
+              </div>
+               <div class="col-lg-4">
+                <fieldset>
+                  <label for="amountMoney">Mablag'</label> 
+                  <input type="number" name="amountMoney" id="amount-money" placeholder="0" autocomplete="on" required>
+                </fieldset>
+              </div>
+               <div class="col-lg-6">
+                <fieldset>
+                  <label for="minimumAmount">Minimum Olish Miqdori</label> 
+                  <input type="number" name="minimumAmount" id="minimum-amount" placeholder="0" autocomplete="on" required>
+                </fieldset>
+              </div>
+               <div class="col-lg-6">
+                <fieldset>
+                  <label for="imageMoney">Foto Isbot</label> 
+                  <input type="url" name="imageMoney" id="image-money" placeholder="imgur.com/upload" autocomplete="on" required>
+                </fieldset>
+              </div>
+              <div class="col-lg-6">
+                <fieldset>
+                  <label for="buySm">Bog'lanish Uchun</label> 
+                  <input type="text" name="userContact" id="buy-sm" placeholder="Telegram Profil" autocomplete="on" required>
+                </fieldset>
+              </div>
+              <div class="col-lg-6">
+                <fieldset>
+                  <button type="submit" id="form-submit" class="orange-button">Tasdiqlash</button>
+                </fieldset>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
