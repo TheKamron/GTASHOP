@@ -91,11 +91,16 @@ router.post("/add-money", async (req, res) => {
     res.redirect('/admin-dashboard')
 })
 
-router.post("/delete-product/:id", async (req, res) => {
+router.post("/delete-account/:id", async (req, res) => {
     const id = req.params.id
     await AddedAccount.findByIdAndDelete(id)
     res.redirect('/products')
 })
 
+router.post("/delete-money/:id", async (req, res) => {
+    const id = req.params.id
+    await AddedMoney.findByIdAndDelete(id)
+    res.redirect('/products')
+})
 
 export default router;
