@@ -2334,8 +2334,8 @@ body {
 
 .login {
   position: absolute;
-  width: 450px;
-  height: 450px;
+  width: 390px;
+  height: 420px;
   background: conic-gradient(#212121, #212121) padding-box,
   conic-gradient(from var(--angle), transparent 30%, #ff4545, #00ddeb, #00ff99, blue, #f704f7, #ff4545) border-box;
   border: 4px solid transparent;
@@ -2447,28 +2447,34 @@ body {
   border-image-slice: 1;
   display: inline;
 }
+
 @media (max-width: 768px) {
   .login {
+    width: 95%; /* Ekran o'lchamiga qarab kenglik moslashadi */
     padding: 30px; /* Kichik ekranda paddingni kamaytirdik */
     font-size: 1em; /* Font hajmi kichraydi */
   }
+
 }
 
-/* Juda kichik ekranlar uchun (masalan, mobil telefonlar) */
 @media (max-width: 480px) {
   .login {
-    padding: 20px;
-    font-size: 0.9em;
+    width: 90%;
+    height: 380px;
+    padding: 25px;
+    font-size: 1em;
   }
+
 }
 
-/* 
-@media only screen and (max-width: 600px) {
+
+ 
+/* @media only screen and (max-width: 600px) {
   .login {
     width: 60%;
     padding: 3em;
   }
-} */
+}  */
 
 @keyframes bounce {
   0% {
@@ -2500,6 +2506,20 @@ body {
 }
 
 /* *****style register***** */
+
+.register-container {
+  display: grid;
+  place-items: center;
+  justify-content: center;
+  background-image: url(../images/heading-bg.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  padding-top: 700px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
 
 @property --angle {
   syntax: "<angle>";
@@ -2628,22 +2648,44 @@ body {
   display: inline;
 }
 
+/* Kichik ekranlar uchun moslashuvchanlik */
 @media (max-width: 768px) {
   .register {
-    height: 500px;
+    width: 95%; /* Ekran o'lchamiga qarab kenglik moslashadi */
     padding: 30px; /* Kichik ekranda paddingni kamaytirdik */
     font-size: 1em; /* Font hajmi kichraydi */
   }
+
 }
 
 /* Juda kichik ekranlar uchun (masalan, mobil telefonlar) */
 @media (max-width: 480px) {
   .register {
+    width: 90%;
+    height: 500px;
+    padding: 20px;
+    font-size: 1em;
+  }
+
+}
+
+
+
+/* @media (max-width: 768px) {
+  .register {
+    padding: 30px; 
+    font-size: 1em; 
+  }
+} */
+
+/* Juda kichik ekranlar uchun (masalan, mobil telefonlar) */
+/* @media (max-width: 480px) {
+  .register {
     height: 500px;
     padding: 20px;
     font-size: 0.9em;
   }
-}
+} */
 
 @keyframes bounce {
   0% {
