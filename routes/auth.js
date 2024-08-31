@@ -46,21 +46,21 @@ router.get('/logout', (req, res) => {
 router.post('/login', async (req, res) => {
     const {username, password} = req.body
     if(!username || !password) {
-        req.flash('loginError', "All Fields Required!")
+        req.flash('loginError', "Ism va Parolingizni Kiriting!")
         res.redirect("/login")
         return
     }
 
     const existUser = await User.findOne({userName: username})
     if(!existUser) { 
-        req.flash('loginError', "User Not Found!")
+        req.flash('loginError', "Foydalanuvchi Topilmadi!")
         res.redirect('/login')
         return
     }
     const userPass = existUser.password
     const userPassEqual = await bcrypt.compare(password, userPass)
     if(!userPassEqual) { 
-        req.flash('loginError', "Incorrect Password")
+        req.flash('loginError', "Noto'g'ri Parol!")
         res.redirect('/login')
         return
     }
