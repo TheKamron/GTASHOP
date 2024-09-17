@@ -2928,6 +2928,7 @@ Create Page Style
   height: 46px;
   text-align: left;
   padding: 0px 15px;
+  cursor: pointer;
   background-color: #282b2f;
   border: 1px solid #404245;
   margin-bottom: 30px;

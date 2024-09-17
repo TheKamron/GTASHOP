@@ -127,8 +127,6 @@
   </div>
 
 
-
-
 {{!-- <div class="col-lg-6">
           <div class="item">
             <div class="row">
@@ -174,23 +172,30 @@
             </div>
           </div>
 </div> --}}
+
   {{!-- <div class="top-seller">
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
           <div class="section-heading">
             <div class="line-dec"></div>
-            <h2>Our Top Sellers This Week.</h2>
+            <h2>Saytimizdagi Top Sotuvchilar!</h2>
           </div>
         </div>
         <div class="col-lg-3 col-sm-6">
           <div class="row">
             <div class="col-lg-12">
-              <div class="item">
+              {{#if users.length}}
+              {{#each users}}
+             <div class="item">
                 <h4>1.</h4>
-                <img src="/images/profile-2.jpg" alt="" style="max-width: 50px; max-height: 50px; border-radius: 50%;">
-                <h6>TheKamron<br><a href="#">E'LONLAR SONI: 05</a></h6>
+                <img src="/images/{{avatar}}" alt="" style="max-width: 50px; max-height: 50px; border-radius: 50%;">
+                <h6>{{userName}}<br><a href="#">E'LONLAR SONI: 05</a></h6>
               </div>
+              {{/each}}
+              {{else}}
+              <p>Hech Qanday Sotuvchilar Topilmadi!</p>
+              {{/if}}
             </div>
           </div>
         </div>

@@ -1,18 +1,25 @@
 import { Router } from "express";
+import User from "../models/User.js"
 import Contact from "../models/Contact.js";
 import AddedAccount from "../models/AddAccount.js";
 import AddedMoney from "../models/AddMoney.js"
 import adminMiddleware from "../middleware/admin.js"
 import userMiddleware from "../middleware/user.js"
+import jwt from "jsonwebtoken"
+
+
 const router = Router()
 
 router.get('/', async (req, res) => {
     const accounts = await AddedAccount.find().lean()
     const money = await AddedMoney.find().lean()
+    const users = await User.find().lean()
+
     res.render("index", {
         title: "GTASHOP - Sizning O'yin Bozoringiz!",
         accounts: accounts.reverse(),
         money: money.reverse(),
+        users: users,
     })
 })
 

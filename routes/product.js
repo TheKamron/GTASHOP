@@ -103,4 +103,10 @@ router.post("/delete-money/:id", async (req, res) => {
     res.redirect('/products')
 })
 
+router.post("/delete-product/:id", async (req, res) => {
+    const id = req.params.id
+    await Account.findByIdAndDelete(id)
+    res.redirect('/admin-dashboard')
+})
+
 export default router;
