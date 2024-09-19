@@ -5,9 +5,9 @@ const MoneySchema = new Schema({
     priceMoney: {type: Number, required: true},
     amountMoney: {type: Number, required: true},
     minimumAmount: {type: Number, required: true},
-    imageMoney: {type: String, required: true},
     userContact: {type: String, required: true},
-    user: {type: Schema.Types.ObjectId, ref: "User"}
+    user: {type: Schema.Types.ObjectId, ref: "User"},
+    // imageMoney: {type: String, required: true},
 }, 
     {timestamps: true}
 )

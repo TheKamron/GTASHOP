@@ -6,9 +6,9 @@ const AccountSchema = new Schema({
     accountMoney: {type: String, required: true},
     accountSecurity: {type: String, required: true},
     accountPrice: {type: String, required: true},
-    accountImage: {type: String, required: true},
     userContact: {type: String, required: true},
     addInfo: {type: String, required: true},
+    // accountImage: {type: String, required: true},
     user: {type: Schema.Types.ObjectId, ref: "User"}
 },
     {timestamps: true}
