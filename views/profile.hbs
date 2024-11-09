@@ -24,7 +24,7 @@
          </div>
          <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
          <ul class="menu">
-            <li><a href="/">Bosh Sahifa</a></li>
+            <li> <a href="/"> <i class="fa fa-home"></i> Bosh Sahifa</a></li>
             <li><a href="/sell-account">Akkaunt Sotish</a></li>
             <li><a href="/sell-money">Virt Sotish</a></li>
             <li><a href="/contact">Aloqa</a></li>
@@ -39,75 +39,116 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
-          <h6>GTASHOP - O'ynaganlarimizni Pulga Aylantirish Vaqti Keldi!</h6>
-          <h2>Batafsil Ma'lumot</h2>
-          <span>Asosiy --> <a href="/item-details">Batafsil</a></span>
-          <div class="buttons">
-            <div class="main-button">
-              <a href="">Batafsil</a>
-            </div>
-            <div class="border-button">
-              <a href="/">Bosh Sahifa</a>
-            </div>
-          </div>
+          <h2>Mening Profilim</h2>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="item-details-page">
+  <div class="author-page">
     <div class="container">
       <div class="row">
+        <div class="col-lg-6">
+          <div class="author">
+            <img src="/images/{{userAvatar}}" alt="" style="border-radius: 50%; max-width: 170px;">
+            <h3>{{userName}}<br> <a href="#">@{{userName}}</a></h3>
+          </div>
+        </div>
+        
+        <div class="col-lg-6">
+          <div class="right-info">
+            <div class="row">
+              
+              <div class="col-5">
+                <div class="data-length">
+                  <i class="fa fa-signal"></i>
+                  <h6><em>E'lonlar Soni: </em> {{data.length}} ta</h6>
+                </div>
+              </div>
+               <div class="col-6">
+                <div class="info-item">
+                  <i class="fa fa-clock"></i>
+                  <h6><em>Ro'yxatdan O'tilgan Sana: </em>{{formatDate regData}}</h6>
+                </div>
+              </div>
+              <div class="col-5">
+                <div class="info-item">
+                  <i class="fa fa-star"></i>
+                  <h6><em>Tarif: </em> 
+                  {{#ifequal role "premium" }}
+                  <span class="premium-vip">Premium VIP</span>  
+                  {{/ifequal}}
+                  {{#ifequal role "admin" }}
+                  <span class="premium-vip">Premium VIP</span>  
+                  {{/ifequal}}
+                  {{#ifequal role "pro" }}
+                  <span class="pro-vip">PRO VIP</span>  
+                  {{/ifequal}}
+                  {{#ifequal role "user" }}
+                  <span class="basic-vip">Starter VIP</span>  
+                  {{/ifequal}}
+                  </h6>
+
+                </div>
+              </div>
+             
+                <div class="col-6">
+                <div class="info-button">
+                  <a href="/profile/settings">Sozlamalar <i class="fa fa-cog info-fonts"></i></a>
+                </div>
+              </div>
+               <div class="col-5">
+                <div class="logout-button">
+                  <a href="/logout">Chiqish <i class="fa fa-sign-out info-fonts"></i></a> 
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
         <div class="col-lg-12">
           <div class="section-heading">
             <div class="line-dec"></div>
-            <h2>E'lon haqida <em>Batafsil </em>Ma'lumot. </h2>
+            <h2>Mening <em>E'lonlarim</em>.</h2>
           </div>
         </div>
-        <div class="col-lg-7">
-          <div class="left-image">
-            <img src="/images/{{moneyDetail.serverImage}}" alt="" style="border-radius: 20px;">
+        {{#if data.length}}
+        {{#each data}}
+        <div class="col-lg-3">
+          <div class="item">
+            <div class="row">
+              <div class="col-lg-12">
+                <span class="author">
+                  <img src="/images/{{userAvatar}}" alt="" style="max-width: 50px; max-height: 50px; border-radius: 50%;">
+                </span>
+                <img src="/images/{{serverImage}}" alt="" style="border-radius: 20px;">
+                <h4>Akkaunt Sotiladi</h4>
+              </div>
+              <div class="col-lg-12">
+                <div class="line-dec"></div>
+                <div class="row">
+                  <div class="col-6">
+                    <span>Narxi: <br> <strong>{{{price}}} UZS</strong></span>
+                  </div>
+                  <div class="col-6">
+                    <span>Server: <br> <strong>{{{server}}}</strong></span>
+                  </div>
+                </div>
+              </div>
+              {{!-- <div class="col-lg-12">
+                <div class="main-button">
+                  <a href="/account-details/{{_id}}">Batafsil</a>
+                </div>
+              </div> --}}
+            </div>
           </div>
         </div>
-        <div class="col-lg-5 align-self-center">
-          <h3>{{moneyDetail.productTitle}}</h4> <br>
-          <span class="author">
-            <img src="/images/{{moneyDetail.avatar}}" alt="" style="max-width: 50px; border-radius: 50%;">
-            <h6>{{moneyDetail.owner}}<br><a href="/user/{{moneyDetail.owner}}">@{{moneyDetail.owner}}</a></h6> 
-          </span>
+        {{/each}}
+        {{else}}
+        <p>Sizning hech qanday E'lonlaringiz Yo'q!</p>
+        {{/if}}
 
-        {{!-- Details --}}
-          <div class="row">
-            <div class="col-3">
-              <span class="price">
-                1mln Virt uchun Narx<br><strong>{{moneyDetail.priceMoney}}</strong><br><em>(So'm)</em>
-              </span>
-            </div>
-            <div class="col-3">
-              <span class="price">
-               Sotuvchi Mablag'i<br><strong>{{moneyDetail.amountMoney}}</strong><br><em>(Virt)</em>
-              </span>
-            </div>
-                        <div class="col-3">
-              <span class="price">
-                Minimum Olish Miqdori<br><strong>{{moneyDetail.minimumAmount}}</strong><br><em>(Virt)</em>
-              </span>
-            </div>
-            <div class="col-4">
-              <span class="owner">
-                Bog'lanish Uchun<br><strong>Telegram</strong><br><em>(@{{moneyDetail.userContact}})</em>
-              </span>
-            </div>
-            <div class="col-5">
-              <span class="date">
-                Qo'yilgan Vaqti<br><strong>{{moneyDetail.date}}</strong><br><em>({{formatDate_2 moneyDetail.createdAt}})</em>
-              </span>
-            </div>
-          <form target="_blank" action="https://t.me/{{moneyDetail.userContact}}">
-            <button type="submit" id="buy-item" class="main-button">Sotib Olish</button>
-          </form>
-          </div>
-        </div>
+        
       </div>
     </div>
   </div>
@@ -177,3 +218,4 @@
   <script src="js/tabs.js"></script>
   <script src="js/popup.js"></script>
   <script src="js/custom.js"></script>
+

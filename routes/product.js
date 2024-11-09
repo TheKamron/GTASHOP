@@ -10,7 +10,8 @@ const router = Router()
 router.get('/sell-account', (req, res) => {
     res.render('sell-account', {
         title: "Akkauntingizni Soting | GTASHOP",
-        accountError: req.flash("accountError")
+        accountError: req.flash("accountError"),
+        sellSuccess: req.flash('sellSuccess')
     })
     if(!req.cookies.token) {
         res.redirect("/login")
@@ -20,7 +21,8 @@ router.get('/sell-account', (req, res) => {
 
 router.get('/sell-money', (req, res) => {
     res.render('sell-money', {
-        title: "Virtual Pul Soting | GTASHOP"
+        title: "Virtual Pul Soting | GTASHOP",
+        sellSuccess: req.flash('sellSuccess')
     })
     if(!req.cookies.token) {
         res.redirect("/login")
@@ -34,7 +36,8 @@ router.get('/add-account/:id', adminMiddleware, async (req, res) => {
     res.render("add-account", {
         title: "Publish Product | Admin",
         account: account,
-        layout: 'admin'
+        layout: 'admin',
+        parentId: id
     })
 })
 
@@ -59,6 +62,14 @@ router.get('/products', adminMiddleware, async (req, res) => {
     })
 })
 
+router.get('/edit-account/:id', async (req, res) => {
+    const id = req.params.id
+    const accountData = await AddedAccount.findById(id)
+    res.render('edit-account', {
+        layout: 'admin',
+        accountData
+    })
+})
 // POST
 
 router.post("/sell-my-account", userMiddleware, async (req, res) => {
@@ -70,18 +81,22 @@ router.post("/sell-my-account", userMiddleware, async (req, res) => {
     }
 
     await Account.create({...req.body, user: req.userId}) 
+    req.flash('sellSuccess', "Ajoyib! E'loningiz 24 Soat ichida Saytga joylanadi.")
     res.redirect('/sell-account')
 })
 
 router.post("/sell-my-money", userMiddleware, async (req, res) => {
     const {selectServer, priceMoney, amountMoney, minimumAmount, imageMoney, userContact} = req.body
     await Money.create({...req.body, user: req.userId})
+    req.flash('sellSuccess', "Ajoyib! E'loningiz 24 Soat ichida Saytga joylanadi.")
     res.redirect('/sell-money')
 })
 
 router.post("/add-account",  async (req, res) => {
-    const {server, productTitle, owner, contactUser, price, userAvatar, serverImage, date, addInfo} = req.body
-     await AddedAccount.create(req.body)
+    const {server, productTitle, owner, contactUser, price, userAvatar, serverImage, date, addInfo, parentId} = req.body
+    const data = await AddedAccount.create({...req.body, _id: parentId})
+    console.log(data)
+    
     res.redirect('/admin-dashboard')
 })
 
@@ -89,6 +104,14 @@ router.post("/add-money", async (req, res) => {
     const {productTitle, owner, priceMoney, amountMoney, minimumAmount, serverImage, userContact, avatar, date} = req.body
     await AddedMoney.create(req.body)
     res.redirect('/admin-dashboard')
+})
+
+router.post('/edit-account/:id', async (req, res) => {
+    const {server, productTitle, owner, contactUser, price, userAvatar, serverImage, date, addInfo, parentId} = req.body
+    const id = req.params.id
+    const data = await AddedAccount.findByIdAndUpdate(id, req.body, {new: true})
+    console.log(data)
+    res.redirect('/products')
 })
 
 router.post("/delete-account/:id", async (req, res) => {

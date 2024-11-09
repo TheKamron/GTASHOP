@@ -7,19 +7,23 @@ import bcrypt from "bcrypt"
 import { generateJWTToken } from "../services/token.js"
 import authMiddleware from "../middleware/auth.js"
 import adminMiddleware from "../middleware/admin.js"
+import userMiddleware from "../middleware/user.js"
 const router = Router()
+
 
 router.get('/register', authMiddleware, (req, res) => {
     res.render("register", {
         title: "Ro'yxatdan O'tish | GTASHOP",
-        registerError: req.flash('registerError')
+        registerError: req.flash('registerError'),
+        regSuccess: req.flash('regSuccess')
     })
 })
 
 router.get('/login', authMiddleware, (req, res) => {
     res.render("login", {
         title: "Kirish | GTASHOP",
-        loginError: req.flash('loginError')
+        loginError: req.flash('loginError'),
+        success: req.flash('success')
     })
 })
 
@@ -38,10 +42,24 @@ router.get('/admin-dashboard', adminMiddleware, async (req,res) => {
     })
 })
 
+
 router.get('/logout', (req, res) => {
   res.clearCookie('token')
   res.redirect('/')
 })
+
+router.get('/profile/settings', userMiddleware,async (req, res) => {
+    const user = await User.findById(req.userId).lean() 
+    res.render('settings', {
+        layout: "", 
+        title: "Sozlamalar | GTASHOP",
+        avatar: user.avatar, 
+        userName: user.userName,
+        settingsError: req.flash('settingsError')
+    })
+})
+
+// POST
 
 router.post('/login', async (req, res) => {
     const {username, password} = req.body
@@ -66,9 +84,18 @@ router.post('/login', async (req, res) => {
     }
 
 
+
+    if(existUser.role === "blocked") {
+        req.flash('loginError', "Sizning Akkauntingiz Bloklangan!")
+        res.redirect('/login')
+        return
+    }
+
+
     const token = generateJWTToken(existUser._id)
     res.cookie("token", token, {httpOnly: true, secure: true})
-    res.redirect('/login')
+    req.flash('success', 'Xush kelibsiz, Muvaffaqiyatli tizimga kirdingiz!')
+    res.redirect('/')
 })
 
 router.post('/register', async (req,res) => {
@@ -111,8 +138,43 @@ router.post('/register', async (req,res) => {
     const user = await User.create(userData)
     const token = generateJWTToken(user._id)
     res.cookie("token", token, {httpOnly: true, secure: true})  
-    res.redirect('/register')
+    req.flash('regSuccess', "Tabriklaymiz, Muvaffaqiyatli Ro'yxatdan O'tdingiz!")
+    res.redirect('/')
 })
 
+
+router.post('/save-edits', async (req, res) => {
+    const {oldPassword, newPassword, confirmPassword, userName} = req.body
+    const user = await User.findOne({userName})
+    if(!oldPassword || !newPassword || !confirmPassword) {
+        req.flash( 'settingsError', "Barcha Maydonlarni To'ldiring!")
+        res.redirect('/profile/settings')
+        return
+    }
+    // Old Password Validation
+    const checkPassword = await bcrypt.compare(oldPassword, user.password)
+    if(!checkPassword) {
+        req.flash('settingsError', 'Eski Parol Xato!')
+        res.redirect('/profile/settings')
+        return
+    }
+
+    if(newPassword !== confirmPassword) {
+        req.flash('settingsError', 'Yangi Parol Mos Emas!')
+        res.redirect('/profile/settings')
+        return
+    }
+
+    if(newPassword.length !== 6) {
+        req.flash('settingsError', "Yangi Parolingiz Juda Qisqa!")
+        res.redirect("/profile/settings")
+        return
+    }
+
+    const hashedPassword = await bcrypt.hash(newPassword, 10)
+    await User.findOneAndUpdate({userName}, {password: hashedPassword}, {new: true})
+    
+    res.redirect('/profile/settings')
+})
 
 export default router;

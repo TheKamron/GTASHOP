@@ -7,7 +7,6 @@ const MoneySchema = new Schema({
     minimumAmount: {type: Number, required: true},
     userContact: {type: String, required: true},
     user: {type: Schema.Types.ObjectId, ref: "User"},
-    // imageMoney: {type: String, required: true},
 }, 
     {timestamps: true}
 )

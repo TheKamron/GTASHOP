@@ -8,8 +8,7 @@ const AccountSchema = new Schema({
     accountPrice: {type: String, required: true},
     userContact: {type: String, required: true},
     addInfo: {type: String, required: true},
-    // accountImage: {type: String, required: true},
-    user: {type: Schema.Types.ObjectId, ref: "User"}
+    user: {type: Schema.Types.ObjectId, ref: "User"},
 },
     {timestamps: true}
 )  

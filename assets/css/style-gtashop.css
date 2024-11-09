@@ -98,7 +98,7 @@ body {
 
 ::selection {
   background: #7453fc;
-  color: #fff;
+  /* color: #fff; */
 }
 
 ::-moz-selection {
@@ -169,6 +169,55 @@ body {
   background-color: #fff;
   color: #7453fc;
   border: 1px solid #fff;
+}
+
+
+.info-button a {
+  font-size: 14px;
+  color: #fff;
+  background-color: #7453fc;
+  border: 1px solid #7453fc;
+  padding: 12px 30px;
+  display: inline-block;
+  border-radius: 25px;
+  font-weight: 500;
+  text-transform: capitalize;
+  letter-spacing: 0.5px;
+  transition: all .3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.logout-button a {
+  font-size: 14px;
+  color: #fff;
+  background-color: #b23b3b;
+  border: 1px solid #b23b3b;
+  padding: 12px 30px;
+  display: inline-block;
+  border-radius: 25px;
+  font-weight: 500;
+  text-transform: capitalize;
+  letter-spacing: 0.5px;
+  transition: all .3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.save-button button {
+  font-size: 14px;
+  color: #fff;
+  background-color: #7453fc;
+  border: 1px solid #7453fc;
+  padding: 12px 30px;
+  display: inline-block;
+  border-radius: 25px;
+  font-weight: 500;
+  text-transform: capitalize;
+  letter-spacing: 0.5px;
+  transition: all .3s;
+  position: relative;
+  overflow: hidden;
 }
 
 section {
@@ -2108,9 +2157,9 @@ Author Page Style
   display: flex;
 }
 
-.author-page .author h4 {
+.author-page .author h3 {
   margin-top: 60px;
-  font-size: 20px;
+  font-size: 25px;
   margin-left: 30px;
 }
 
@@ -2127,6 +2176,14 @@ Author Page Style
   margin-left: 100px;
 }
 
+.author-page .center-info {
+  background-color: #282b2f;
+  border: 1px solid #404245;
+  padding: 20px 30px;
+  border-radius: 20px;
+  margin-left: 100px;
+}
+
 .author-page .right-info .info-item {
   margin-bottom: 20px;
 }
@@ -2134,6 +2191,11 @@ Author Page Style
 .author-page .right-info i {
   color: #7453fc;
   font-size: 22px;
+}
+
+.author-page .right-info .info-fonts {
+  color: white;
+  font-size: 15px;
 }
 
 .author-page .right-info h6 {
@@ -2145,7 +2207,7 @@ Author Page Style
 .author-page .right-info h6 em {
   font-size: 15px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 550;
   color: #fff;
 }
 
@@ -3073,6 +3135,108 @@ Responsive Style
 
 .error__close path {
   fill: #fff;
+}
+
+.basic-vip {
+  font-weight: bold;
+  font-size: 0.8em; /* Matn kattaligi */
+  background: linear-gradient(90deg, #C0C0C0, #D3D3D3, #B0C4DE);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5), 
+               0 0 10px rgba(192, 192, 192, 0.7), 
+               0 0 20px rgba(169, 169, 169, 0.5);
+  transition: transform 0.2s ease-in-out;
+}
+
+.pro-vip {
+  font-weight: bold;
+  font-size: 0.8em;
+  background: linear-gradient(90deg, #FF0000, #ff1d1d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 2px 2px 5px 
+  rgba(0, 0, 0, 0.4), 0 0 10px 
+  rgba(255, 0, 0, 0.7);
+  transition: transform 0.2s ease-in-out;
+}
+
+.premium-vip {
+  font-weight: bold;
+  font-size: 0.8em; /* Matn kattaligi */
+  background: linear-gradient(90deg, #FFD700, #FFC700, #FFB700, #FFA500);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5), 
+               0 0 10px rgba(255, 223, 0, 0.7), 
+               0 0 20px rgba(255, 215, 0, 0.5);
+  transition: transform 0.2s ease-in-out;
+}
+
+.settings-input {
+  width: 100%;
+  height: 46px;
+  text-align: left;
+  padding: 0px 15px;
+  background-color: #37393c;
+  border: 1px solid #282b2f;
+  margin-bottom: 30px;
+  font-weight: 500;
+  color: #afafaf;
+  border-radius: 20px;
+}
+
+
+.settings-input:focus {
+  border-color: #282b2f;
+  outline: none;
+}
+
+/* Alert qutisini pastki o'ng burchakda ko'rsatish */
+.success {
+  position: fixed; /* Pastki o'ng burchakka joylashtirish uchun */
+  bottom: 20px; /* Pastdan masofa */
+  right: 20px; /* O'ngdan masofa */
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  width: 320px;
+  padding: 12px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+  background: #84D65A;
+  border-radius: 8px;
+  box-shadow: 0px 0px 5px -3px #111;
+  z-index: 1000; /* Boshqa elementlardan ustun qo'yish uchun */
+}
+
+/* Ikonkalar uchun uslublar */
+.success__icon {
+  width: 20px;
+  height: 20px;
+  transform: translateY(-2px);
+  margin-right: 8px;
+}
+
+.success__icon path {
+  fill: #393A37;
+}
+
+.success__title {
+  font-weight: 500;
+  font-size: 14px;
+  color: #393A37;
+}
+
+.success__close {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+.success__close path {
+  fill: #393A37;
 }
 
 

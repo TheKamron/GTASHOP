@@ -10,6 +10,7 @@ const PublishSchema = new Schema({
     serverImage: {type: String, required: true},
     date: {type: String, required: true},
     addInfo: {type: String, required: true},
+    parentId: {type: String, required: true}
 }, {timestamps: true} )
 
 

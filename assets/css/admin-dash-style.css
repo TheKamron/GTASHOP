@@ -458,6 +458,17 @@ input[type="checkbox"]:focus {
 .tm-product-delete-link:hover .tm-product-delete-icon {
   color: #6d8ca6;
 }
+
+.tm-product-edit-link {
+  padding: 10px;
+  border-radius: 50%;
+  background-color: gray;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+}
+
 .custom-select {
   width: 100%;
   border: none;

@@ -1,53 +1,22 @@
-  <div class="page-heading normal-space">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <h6>GTASHOP - O'ynaganlarimizni Pulga Aylantirish Vaqti Keldi!</h6>
-          <h2>Virtual Pullarni Soting!</h2>
-          <span>Asosiy --> <a href="">Virt Sotish</a></span>
-          <div class="buttons">
-            <div class="main-button">
-              <a href="/sell-money">Virt Sotish</a>
-            </div>
-            <div class="border-button">
-              <a href="/sell-account">Akkaunt Sotish</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+    <head>
+          <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Admin Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 
-    {{#if sellSuccess}}
-    <div class="success" id="success">
-    <div class="success__icon">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" height="24" fill="none"><path fill-rule="evenodd" fill="#393a37" d="m12 1c-6.075 0-11 4.925-11 11s4.925 11 11 11 11-4.925 11-11-4.925-11-11-11zm4.768 9.14c.0878-.1004.1546-.21726.1966-.34383.0419-.12657.0581-.26026.0477-.39319-.0105-.13293-.0475-.26242-.1087-.38085-.0613-.11844-.1456-.22342-.2481-.30879-.1024-.08536-.2209-.14938-.3484-.18828s-.2616-.0519-.3942-.03823c-.1327.01366-.2612.05372-.3782.1178-.1169.06409-.2198.15091-.3027.25537l-4.3 5.159-2.225-2.226c-.1886-.1822-.4412-.283-.7034-.2807s-.51301.1075-.69842.2929-.29058.4362-.29285.6984c-.00228.2622.09851.5148.28067.7034l3 3c.0983.0982.2159.1748.3454.2251.1295.0502.2681.0729.4069.0665.1387-.0063.2747-.0414.3991-.1032.1244-.0617.2347-.1487.3236-.2554z" clip-rule="evenodd"></path></svg>
-    </div>
-    <div class="success__title">{{sellSuccess}}</div>
-    </div>
-    <script>
-      setTimeout(function() {
-        document.getElementById('success').style.display = 'none'
-      }, 8000)
-    </script>
-    {{/if}}
-
-  <div class="item-details-page">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="section-heading">
-            <div class="line-dec"></div>
-            <h2>Virtual Pullarni <em>Sotish</em> Uchun Berilganlarni To'ldiring.</h2>
-          </div>
-        </div>
-        <div class="col-lg-12">
-          <form id="sell-account-form" action="/sell-my-money" method="post">
+    <link rel="stylesheet" href="/css/fontawesome.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/admin-dash-style.css">
+    </head>
+   <body>
+            <div class="col-lg-12">
+          <form id="publish-product-form" action="/edit-account/{{accountData_id}}" method="post">
             <div class="row">
-              <div class="col-lg-4">
+                            <div class="col-lg-4">
                 <fieldset>
                     <label for="">Serverni Tanlang</label>
-                 <select class="select-server" name="selectServer" id="">
+                 <select class="select-server" name="server" id="server">
                               {{!-- Arizona Rp --}}
                   <option value="Arizona RP | 01">Arizona RP | Phoenix</option>
                   <option value="Arizona RP | 02">Arizona RP | Tucson</option>
@@ -138,42 +107,60 @@
               </div>
               <div class="col-lg-4">
                 <fieldset>
-                  <label for="priceMoney">1mln uchun narx(so'mda)</label> 
-                  <input type="number" name="priceMoney" id="price-money" placeholder="0" autocomplete="on" required>
+                  <label>Product Name</label>
+                  <input type="text" name="productTitle" id="productTitle" value="{{accountData.productTitle}}"  autocomplete="on" required>
                 </fieldset>
               </div>
-               <div class="col-lg-4">
+              <div class="col-lg-4">
                 <fieldset>
-                  <label for="amountMoney">Mablag'</label> 
-                  <input type="number" name="amountMoney" id="amount-money" placeholder="0" autocomplete="on" required>
+                  <label>Product Owner</label>
+                  <input type="text" name="owner" id="owner" value="{{accountData.owner}}" autocomplete="on" required>
                 </fieldset>
               </div>
-               <div class="col-lg-6">
+              <div class="col-lg-4">
                 <fieldset>
-                  <label for="minimumAmount">Minimum Olish Miqdori</label> 
-                  <input type="number" name="minimumAmount" id="minimum-amount" placeholder="0" autocomplete="on" required>
+                  <label>Contact User</label>
+                  <input type="text" name="contactUser" id="contactUser" value="{{accountData.contactUser}}" autocomplete="on" required>
                 </fieldset>
               </div>
-               {{!-- <div class="col-lg-6">
+              <div class="col-lg-4">
                 <fieldset>
-                  <label for="imageMoney">Foto Isbot</label> 
-                  <input type="url" name="imageMoney" id="image-money" placeholder="imgur.com/upload" autocomplete="on" required>
+                  <label>Price (Uzs)</label>
+                  <input type="number" name="price" id="price" value="{{accountData.price }}" autocomplete="on" required>
                 </fieldset>
-              </div> --}}
+              </div>
+                <div class="col-lg-4">
+                <fieldset>
+                  <label>Avatar</label>
+                  <input type="text" name="userAvatar" id="serverImage" value="{{accountData.userAvatar}}" autocomplete="on" required>
+                </fieldset>
+              </div>
+                <div class="col-lg-6">
+                <fieldset>
+                  <label>Photo</label>
+                  <input type="text" name="serverImage" id="serverImage" value="{{accountData.serverImage}}" autocomplete="on" required>
+                </fieldset>
+              </div>
               <div class="col-lg-6">
                 <fieldset>
-                  <label for="buySm">Bog'lanish Uchun</label> 
-                  <input type="text" name="userContact" id="buy-sm" placeholder="Telegram Profil" autocomplete="on" required>
+                  <label>Date</label>
+                  <input type="text" name="date" id="date" value="{{formatDate accountData.createdAt}}" autocomplete="on" required>
+                </fieldset>
+              </div>
+            <div class="col-lg-6">
+                <fieldset>
+                  <label>Description</label>
+                  <textarea class="add-info" name="addInfo" id="add-info"  required> {{accountData.addInfo}} </textarea>
                 </fieldset>
               </div>
               <div class="col-lg-6">
                 <fieldset>
-                  <button type="submit" id="form-submit" class="orange-button">Tasdiqlash</button>
+                  <button type="submit" id="form-submit" class="btn">Tasdiqlash</button>
                 </fieldset>
+                <input type="hidden" name="parentId" id="parentId" value="{{parentId}}" autocomplete="on" required>
               </div>
             </div>
           </form>
         </div>
-      </div>
-    </div>
-  </div>
+  </body>
+   

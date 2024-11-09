@@ -18,7 +18,7 @@
                 <tbody>
                   {{#each accounts}}
                     <tr>
-                    <th scope="row"><input type="checkbox" /></th>
+                    <th scope="row"></th>
                     <td class="tm-product-name">{{productTitle}}</td>
                     <td>{{price}}</td>
                     <td>{{owner}}</td>
@@ -29,6 +29,9 @@
                        <button class="tm-product-delete-link "><i class="far fa-trash-alt tm-product-delete-icon"></i></button>                
                       </form>
                     </td>
+                    <td><th scope="row"> <form action="/edit-account/{{_id}}" method="get">
+                       <button class="tm-product-edit-link "><i class="far fa-edit tm-product-delete-icon"></i></button>                
+                      </form></th></td>
                   </tr>
                   {{/each}}
                 </tbody>
@@ -64,7 +67,9 @@
                 <tbody>
                   {{#each money}}
                     <tr>
-                    <th scope="row"><input type="checkbox" /></th>
+                    <th scope="row"> <form action="/edit-money/{{_id}}" method="post">
+                       <button class="tm-product-edit-link "><i class="far fa-edit tm-product-delete-icon"></i></button>                
+                      </form></th>
                     <td class="tm-product-name">{{productTitle}}</td>
                     <td>{{priceMoney}} So'm</td>
                     <td>{{owner}}</td>

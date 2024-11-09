@@ -6,7 +6,7 @@ import session from "express-session";
 import flash from "connect-flash"
 import cookieParser from "cookie-parser";
 import hbsHelper from "./utils/function.js"
-
+import User from "./models/User.js"
 // middlewares
 import varMiddleware from "./middleware/var.js"
 
@@ -18,7 +18,10 @@ import ProductRoutes from "./routes/product.js"
 dotenv.config()
 
 const app = express()
-const hbs = create({defaultLayout: 'main', extname: 'hbs', helpers: hbsHelper})
+const hbs = create({defaultLayout: 'main', extname: 'hbs', helpers: hbsHelper, runtimeOptions: {
+    allowProtoPropertiesByDefault: true,
+    allowProtoMethodsByDefault: true,
+} })
 app.engine('hbs', hbs.engine)
 app.set('view engine', 'hbs');
 app.set('views', "./views")
@@ -31,14 +34,16 @@ app.use(express.urlencoded({extended: true}))
 app.use(express.static("public"))
 app.use(express.static("assets"))
 app.use(express.static("vendor"))
-
+app.use((req, res, next) => {
+    res.locals.success = req.flash('success')
+    res.locals.regSuccess = req.flash('regSuccess')
+    next()
+})
 
 app.use(varMiddleware)
-
 app.use(AuthRoutes)
 app.use(IndexRoutes)
 app.use(ProductRoutes)
-
 
 
 const startApp = () => {
@@ -46,9 +51,8 @@ const startApp = () => {
         mongoose.set('strictQuery', false)
         mongoose.connect(process.env.MONGO_URI)
         .then(() => console.log('MongoDB Connected'))
-
-        const port = process.env.PORT || 5500
-        app.listen(port, () =>  console.log('Server is running on port ${port} '))
+        const PORT = process.env.PORT || 5500
+        app.listen(PORT, () =>  console.log(`Server is running on port ${PORT} `))
 
     } catch (error) {
         console.log(error)

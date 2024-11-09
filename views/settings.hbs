@@ -24,7 +24,7 @@
          </div>
          <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
          <ul class="menu">
-            <li><a href="/">Bosh Sahifa</a></li>
+            <li> <a href="/"> <i class="fa fa-home"></i> Bosh Sahifa</a></li>
             <li><a href="/sell-account">Akkaunt Sotish</a></li>
             <li><a href="/sell-money">Virt Sotish</a></li>
             <li><a href="/contact">Aloqa</a></li>
@@ -39,75 +39,94 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
-          <h6>GTASHOP - O'ynaganlarimizni Pulga Aylantirish Vaqti Keldi!</h6>
-          <h2>Batafsil Ma'lumot</h2>
-          <span>Asosiy --> <a href="/item-details">Batafsil</a></span>
-          <div class="buttons">
-            <div class="main-button">
-              <a href="">Batafsil</a>
-            </div>
-            <div class="border-button">
-              <a href="/">Bosh Sahifa</a>
-            </div>
-          </div>
+          <h2>Sozlamalar</h2>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="item-details-page">
+  <div class="author-page">
     <div class="container">
       <div class="row">
-        <div class="col-lg-12">
-          <div class="section-heading">
-            <div class="line-dec"></div>
-            <h2>E'lon haqida <em>Batafsil </em>Ma'lumot. </h2>
-          </div>
+        <div class="col-lg-2">
+          {{!-- <div class="author">
+            <img src="/images/{{avatar}}" alt="" style="border-radius: 50%; max-width: 170px;">
+            <h3>{{userName}}<br> <a href="#">@{{userName}}</a></h3>
+          </div> --}}
         </div>
+        
         <div class="col-lg-7">
-          <div class="left-image">
-            <img src="/images/{{moneyDetail.serverImage}}" alt="" style="border-radius: 20px;">
-          </div>
-        </div>
-        <div class="col-lg-5 align-self-center">
-          <h3>{{moneyDetail.productTitle}}</h4> <br>
-          <span class="author">
-            <img src="/images/{{moneyDetail.avatar}}" alt="" style="max-width: 50px; border-radius: 50%;">
-            <h6>{{moneyDetail.owner}}<br><a href="/user/{{moneyDetail.owner}}">@{{moneyDetail.owner}}</a></h6> 
-          </span>
+          <div class="right-info">
+            <div class="row">
+              
+              <div class="col-8">
+                <div class="data-length">
+                <h6>Sozlamalar</h6>
+                
+                   {{#if settingsError}}
+                   <br>
+              <div class="error">
+      <div class="error__icon">
+        <svg fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"> <path d="m13 13h-2v-6h2zm0 4h-2v-2h2zm-1-15c-1.3132 0-2.61358.25866-3.82683.7612-1.21326.50255-2.31565 1.23915-3.24424 2.16773-1.87536 1.87537-2.92893 4.41891-2.92893 7.07107 0 2.6522 1.05357 5.1957 2.92893 7.0711.92859.9286 2.03098 1.6651 3.24424 2.1677 1.21325.5025 2.51363.7612 3.82683.7612 2.6522 0 5.1957-1.0536 7.0711-2.9289 1.8753-1.8754 2.9289-4.4189 2.9289-7.0711 0-1.3132-.2587-2.61358-.7612-3.82683-.5026-1.21326-1.2391-2.31565-2.1677-3.24424-.9286-.92858-2.031-1.66518-3.2443-2.16773-1.2132-.50254-2.5136-.7612-3.8268-.7612z" fill="#393a37"></path>
+        </svg>
+      </div>
+      <div class="error__title">{{settingsError}}</div>
+      <div class="error__close">
+        <svg height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg">
+          <path         d="m15.8333 5.34166-1.175-1.175-4.6583 4.65834-4.65833-4.65834-1.175 1.175 4.65833 4.65834-4.65833 4.6583 1.175 1.175 4.65833-4.6583 4.6583 4.6583 1.175-1.175-4.6583-4.6583z" fill="#393a37"></path>
+        </svg>
+      </div>
+              </div>
+                <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                  const closeButton = document.querySelector('.error__close');
+                  const errorDiv = document.querySelector('.error');
 
-        {{!-- Details --}}
-          <div class="row">
-            <div class="col-3">
-              <span class="price">
-                1mln Virt uchun Narx<br><strong>{{moneyDetail.priceMoney}}</strong><br><em>(So'm)</em>
-              </span>
+                  closeButton.addEventListener('click', () => {
+                    errorDiv.style.display = 'none';
+                  });
+                });
+                </script>
+                    {{/if}} 
+                    <br>
+                </div>
+              </div>
+            <form action="/save-edits" method="post">
+              <div class="col-8">
+                <div class="data-length">
+                <h6><em>Eski Parol</em></h6>
+                <br>
+                <input type="password" name="oldPassword" class="settings-input" required>
+                </div>
+              </div>
+
+                <div class="col-8">
+                <div class="data-length">
+                <h6><em>Yangi Parol</em></h6>
+                <br>
+                <input type="password" name="newPassword" class="settings-input"  required>
+                </div>
+              </div>
+
+                <div class="col-8">
+                <div class="data-length">
+                <h6><em>Parolni Tasdiqlang</em></h6>
+                <br>
+                <input type="password"  name="confirmPassword" class="settings-input" required>
+                </div>
+              </div>
+
+              <input type="hidden" name="userName" id="userName" value="{{userName}}">
+                <div class="col-6">
+                <div class="save-button"> 
+                    <button>Saqlash</button>
+                </div>
+              </div>
+              </form>
+                  
             </div>
-            <div class="col-3">
-              <span class="price">
-               Sotuvchi Mablag'i<br><strong>{{moneyDetail.amountMoney}}</strong><br><em>(Virt)</em>
-              </span>
-            </div>
-                        <div class="col-3">
-              <span class="price">
-                Minimum Olish Miqdori<br><strong>{{moneyDetail.minimumAmount}}</strong><br><em>(Virt)</em>
-              </span>
-            </div>
-            <div class="col-4">
-              <span class="owner">
-                Bog'lanish Uchun<br><strong>Telegram</strong><br><em>(@{{moneyDetail.userContact}})</em>
-              </span>
-            </div>
-            <div class="col-5">
-              <span class="date">
-                Qo'yilgan Vaqti<br><strong>{{moneyDetail.date}}</strong><br><em>({{formatDate_2 moneyDetail.createdAt}})</em>
-              </span>
-            </div>
-          <form target="_blank" action="https://t.me/{{moneyDetail.userContact}}">
-            <button type="submit" id="buy-item" class="main-button">Sotib Olish</button>
-          </form>
           </div>
-        </div>
+        </div>        
       </div>
     </div>
   </div>
@@ -177,3 +196,4 @@
   <script src="js/tabs.js"></script>
   <script src="js/popup.js"></script>
   <script src="js/custom.js"></script>
+

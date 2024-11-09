@@ -4,14 +4,14 @@
          </div>
          <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
          <ul class="menu">
-            <li><a href="/">Bosh Sahifa</a></li>
+            <li> <a href="/"> <i class="fa fa-home"></i> Bosh Sahifa</a></li>
             <li><a href="/sell-account">Akkaunt Sotish</a></li>
             <li><a href="/sell-money">Virt Sotish</a></li>
             <li><a href="/contact">Aloqa</a></li>
             {{#if token}} 
-            <li><a href="/logout">Chiqish</a></li>
+            <li><a href="/profile">Profil <i class="fa fa-user"></i> </a></li>
             {{else}}
-            <li><a href="/login">Kirish</a></li>
+            <li><a href="/login">Kirish <i class="fa fa-sign-in"></i></a></li>
             {{/if}}
          </ul>
       </nav>
