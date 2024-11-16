@@ -14,12 +14,11 @@ const router = Router()
 router.get('/', async (req, res) => {
     const accounts = await AddedAccount.find().lean()
     const money = await AddedMoney.find().lean()
-    const users = await User.find().lean()
-
+    const users = await User.find().lean()    
     res.render("index", {
         title: "GTASHOP - Sizning O'yin Bozoringiz!",
         accounts: accounts.reverse(),
-        money: money,
+        money: money.reverse(),
         users: users,
     })
 })
